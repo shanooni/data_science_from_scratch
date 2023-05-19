@@ -24,4 +24,13 @@ def most_common_interest_with(user):
                    for interested_user_id in user_ids_by_interest[interest]
                    if interested_user_id != user["id"]) 
     
-print(most_common_interest_with(users[0]))
+# print(most_common_interest_with(users[0]))
+
+words_and_count = Counter(word 
+    for user,interest in interests
+    for word in interest.lower().split()
+)
+
+for word,count in words_and_count.most_common():
+    if count > 1:
+        print(f"word : {word} \n count: {count}")
